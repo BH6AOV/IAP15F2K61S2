@@ -1,0 +1,104 @@
+C51 COMPILER V9.57.0.0   MAIN                                                              11/29/2019 22:36:28 PAGE 1   
+
+
+C51 COMPILER V9.57.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: E:\MDK\install\Core\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\List
+                    -ings\main.lst) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <reg52.h>
+   2          #include <intrins.h>
+   3          #define uchar unsigned char
+   4          #define uint unsigned int
+   5          sbit HC138_A = P2^5;    // 74HC138数据输入端 A
+   6          sbit HC138_B = P2^6;    // 74HC138数据输入端 B
+   7          sbit HC138_C = P2^7;    // 74HC138数据输入端 C
+   8          
+   9          /**********************************************************
+  10          *  函数名称：100毫秒延时函数(11.0592MHz)
+  11          *  日期：2019-11-29
+  12          *  姓名：ZhangHJ
+  13          *  说明：由STC-ISP软件自动生成
+  14          ***********************************************************/
+  15          void Delay100ms()               //@11.0592MHz
+  16          {
+  17   1              unsigned char i, j, k;
+  18   1              _nop_();
+  19   1              _nop_();
+  20   1              i = 5;
+  21   1              j = 52;
+  22   1              k = 195;
+  23   1              do
+  24   1              {
+  25   2                      do
+  26   2                      {
+  27   3                              while (--k);
+  28   3                      } while (--j);
+  29   2              } while (--i);
+  30   1      }
+  31          
+  32          
+  33          /**********************************************************
+  34          *  函数名称：系统初始化函数
+  35          *  日期：2019-11-29
+  36          *  姓名：ZhangHJ
+  37          *  说明：用于关闭继电器和蜂鸣器
+  38          *                1. 74HC138输入101 --> Y5=0 --> CY5=1
+  39          *                2. 74HC573的输入经过ULN2003取反后,关闭继电器和蜂鸣器
+  40          ***********************************************************/
+  41          void System_Init()
+  42          {
+  43   1              HC138_C = 1;
+  44   1              HC138_B = 0;
+  45   1              HC138_A = 1;    // Y5=0 --> CY5 =1
+  46   1              P0 = 0x00;              // 关闭继电器和蜂鸣器
+  47   1      }
+  48          
+  49          
+  50          /**********************************************************
+  51          *  函数名称：LED初始化函数
+  52          *  日期：2019-11-29
+  53          *  姓名：ZhangHJ
+  54          *  说明：用于配置LED
+C51 COMPILER V9.57.0.0   MAIN                                                              11/29/2019 22:36:28 PAGE 2   
+
+  55          *                1. 74HC138输入100 --> Y4=0 --> CY4=1
+  56          *                2. WR或非Y4 --> CY4
+  57          ***********************************************************/
+  58          void LED_config()
+  59          {
+  60   1              HC138_C = 1;
+  61   1              HC138_B = 0;
+  62   1              HC138_A = 0;
+  63   1              WR = 0;
+  64   1      }
+  65          
+  66          
+  67          // 主函数功能：关闭蜂鸣器和继电器,LED循环点亮
+  68          void main()
+  69          {
+  70   1              System_Init();
+  71   1              LED_config();
+  72   1              P0 = 0xFE;
+  73   1              while(1)
+  74   1              {
+  75   2                      Delay100ms();
+  76   2                      P0 = _crol_(P0, 1);
+  77   2              }
+  78   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     61    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
