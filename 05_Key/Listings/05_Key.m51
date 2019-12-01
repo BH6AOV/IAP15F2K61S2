@@ -1,0 +1,170 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    12/01/2019  17:23:00  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+E:\MDK\INSTALL\CORE\C51\BIN\BL51.EXE .\Objects\main.obj TO .\Objects\05_Key PRINT (.\Listings\05_Key.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\main.obj (MAIN)
+  E:\MDK\INSTALL\CORE\C51\LIB\C51S.LIB (?C_STARTUP)
+  E:\MDK\INSTALL\CORE\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\Objects\05_Key (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0004H     UNIT         ?DT?MAIN
+            IDATA   000CH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     008CH     UNIT         ?C_C51STARTUP
+            CODE    008FH     0039H     UNIT         ?PR?MAIN?MAIN
+            CODE    00C8H     0017H     UNIT         ?PR?SYSTEM_INIT?MAIN
+            CODE    00DFH     0010H     UNIT         ?PR?_LED_DISPLAY?MAIN
+            CODE    00EFH     000FH     UNIT         ?PR?DELAY15MS?MAIN
+            CODE    00FEH     0007H     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\05_Key (MAIN)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAIN
+  +--> ?PR?SYSTEM_INIT?MAIN
+  +--> ?PR?DELAY15MS?MAIN
+  +--> ?PR?_LED_DISPLAY?MAIN
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\05_Key (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/01/2019  17:23:00  PAGE 2
+
+
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:00C8H         PUBLIC        System_Init
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IE
+  C:00DFH         PUBLIC        _LED_Display
+  D:00B8H         PUBLIC        IP
+  C:008FH         PUBLIC        main
+  B:00B0H.6       PUBLIC        WR
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  D:0008H         PUBLIC        led
+  C:00EFH         PUBLIC        Delay15ms
+  B:00A0H.5       PUBLIC        HC138_A
+  B:00A0H.6       PUBLIC        HC138_B
+  B:00A0H.7       PUBLIC        HC138_C
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          DELAY15MS
+  -------         DO            
+  D:0007H         SYMBOL        i
+  D:0006H         SYMBOL        j
+  D:0005H         SYMBOL        k
+  -------         ENDDO         
+  C:00EFH         LINE#         16
+  C:00EFH         LINE#         17
+  C:00EFH         LINE#         19
+  C:00F0H         LINE#         20
+  C:00F1H         LINE#         21
+  C:00F3H         LINE#         22
+  C:00F5H         LINE#         23
+  C:00F7H         LINE#         25
+  C:00F7H         LINE#         27
+  C:00F7H         LINE#         28
+  C:00F9H         LINE#         29
+  C:00FBH         LINE#         30
+  C:00FDH         LINE#         31
+  -------         ENDPROC       DELAY15MS
+  -------         PROC          SYSTEM_INIT
+  C:00C8H         LINE#         41
+  C:00C8H         LINE#         42
+  C:00C8H         LINE#         43
+  C:00CAH         LINE#         44
+  C:00CCH         LINE#         45
+  C:00CEH         LINE#         46
+  C:00D0H         LINE#         47
+  C:00D3H         LINE#         48
+  C:00D5H         LINE#         49
+  C:00D7H         LINE#         50
+  C:00D9H         LINE#         51
+  C:00DBH         LINE#         52
+  C:00DEH         LINE#         53
+  -------         ENDPROC       SYSTEM_INIT
+  -------         PROC          _LED_DISPLAY
+  D:0007H         SYMBOL        num
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/01/2019  17:23:00  PAGE 3
+
+
+  -------         DO            
+  D:0007H         SYMBOL        display
+  -------         ENDDO         
+  C:00DFH         LINE#         63
+  C:00DFH         LINE#         64
+  C:00DFH         LINE#         65
+  C:00E4H         LINE#         66
+  C:00E6H         LINE#         67
+  C:00E8H         LINE#         68
+  C:00EAH         LINE#         69
+  C:00ECH         LINE#         70
+  C:00EEH         LINE#         71
+  -------         ENDPROC       _LED_DISPLAY
+  -------         PROC          MAIN
+  -------         DO            
+  D:0004H         SYMBOL        flag
+  -------         ENDDO         
+  C:008FH         LINE#         76
+  C:008FH         LINE#         77
+  C:008FH         LINE#         79
+  C:0092H         LINE#         80
+  C:0092H         LINE#         81
+  C:0092H         LINE#         82
+  C:0095H         LINE#         83
+  C:009AH         LINE#         84
+  C:009DH         LINE#         85
+  C:009DH         LINE#         86
+  C:00A0H         LINE#         87
+  C:00B2H         LINE#         88
+  C:00B2H         LINE#         89
+  C:00B2H         LINE#         90
+  C:00B4H         LINE#         91
+  C:00B6H         LINE#         92
+  C:00B6H         LINE#         93
+  C:00B8H         LINE#         94
+  C:00BAH         LINE#         95
+  C:00BAH         LINE#         96
+  C:00BFH         LINE#         97
+  C:00C1H         LINE#         98
+  C:00C1H         LINE#         99
+  C:00C6H         LINE#         100
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+Program Size: data=13.0 xdata=0 code=261
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
