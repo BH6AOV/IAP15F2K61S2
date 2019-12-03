@@ -1,0 +1,3 @@
+".\Objects\main.obj" 
+TO ".\Objects\07_HCSR04" 
+PRINT(".\Listings\07_HCSR04.m51") RAMSIZE(256) 
