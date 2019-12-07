@@ -1,0 +1,3 @@
+".\Objects\main.obj" 
+TO ".\Objects\09_DS1302" 
+PRINT(".\Listings\09_DS1302.m51") RAMSIZE(256) 
