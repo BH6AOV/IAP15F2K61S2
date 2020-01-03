@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    12/06/2019  10:32:57  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    12/07/2019  19:48:41  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
@@ -59,7 +59,7 @@ SEGMENT
   +--> ?PR?SYSTEM_INIT?MAIN
   +--> ?PR?DS1302_INIT?MAIN
   +--> ?PR?READ_TIME?MAIN
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/06/2019  10:32:57  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/07/2019  19:48:41  PAGE 2
 
 
   +--> ?PR?TIME_DISPLAY?MAIN
@@ -119,7 +119,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\09_DS1302 (MAIN)
   B:0090H.3       PUBLIC        RST
   D:00D0H         PUBLIC        PSW
   -------         PROC          DELAY1MS
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/06/2019  10:32:57  PAGE 3
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/07/2019  19:48:41  PAGE 3
 
 
   -------         DO            
@@ -179,7 +179,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\09_DS1302 (MAIN)
   C:01E4H         LINE#         67
   C:01E6H         LINE#         68
   C:01E8H         LINE#         69
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/06/2019  10:32:57  PAGE 4
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/07/2019  19:48:41  PAGE 4
 
 
   C:01EBH         LINE#         70
@@ -239,7 +239,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\09_DS1302 (MAIN)
   C:020FH         LINE#         139
   C:0212H         LINE#         140
   C:0212H         LINE#         141
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/06/2019  10:32:57  PAGE 5
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/07/2019  19:48:41  PAGE 5
 
 
   C:0215H         LINE#         142
@@ -299,7 +299,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\09_DS1302 (MAIN)
   C:02CCH         LINE#         210
   C:02CCH         LINE#         211
   C:02CFH         LINE#         212
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/06/2019  10:32:57  PAGE 6
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/07/2019  19:48:41  PAGE 6
 
 
   C:02D1H         LINE#         213

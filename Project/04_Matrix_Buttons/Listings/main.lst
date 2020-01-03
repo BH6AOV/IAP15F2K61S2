@@ -1,0 +1,194 @@
+C51 COMPILER V9.57.0.0   MAIN                                                              12/01/2019 16:30:44 PAGE 1   
+
+
+C51 COMPILER V9.57.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: E:\MDK\install\Core\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\List
+                    -ings\main.lst) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <reg52.h>
+   2          #include <intrins.h>
+   3          #define uchar unsigned char
+   4          #define uint unsigned int
+   5          sbit HC138_A = P2^5;
+   6          sbit HC138_B = P2^6;
+   7          sbit HC138_C = P2^7;
+   8          
+   9          sfr P4 = 0xC0;
+  10          sbit col_1 = P4^4;
+  11          sbit col_2 = P4^2;
+  12          sbit col_3 = P3^5;
+  13          sbit col_4 = P3^4;
+  14          sbit row_1 = P3^0;
+  15          sbit row_2 = P3^1;
+  16          sbit row_3 = P3^2;
+  17          sbit row_4 = P3^3;
+  18          
+  19          uchar Key_Number = 0;
+  20          
+  21          // 0~F
+  22          uchar code segment[] = {0xC0,0xF9,0xA4,0xB0,0x99,0x92,0x82,0xF8,0x80,0x90,0x88,0x83,0xC6,0xA1,0x86,0x8E};
+  23          
+  24          void Delay2ms()         //@11.0592MHz
+  25          {
+  26   1              unsigned char i, j;
+  27   1              _nop_();
+  28   1              _nop_();
+  29   1              i = 22;
+  30   1              j = 128;
+  31   1              do
+  32   1              {
+  33   2                      while (--j);
+  34   2              } while (--i);
+  35   1      }
+  36          
+  37          
+  38          void System_Init()
+  39          {
+  40   1              HC138_A = 1;
+  41   1              HC138_B = 0;
+  42   1              HC138_C = 1;
+  43   1              WR = 0;
+  44   1              P0 = 0x00;
+  45   1              HC138_A = 0;
+  46   1              HC138_B = 0;
+  47   1              HC138_C = 1;
+  48   1              WR = 0;
+  49   1              P0 = 0xFF;
+  50   1      }
+  51          
+  52          void DisplayNum(uchar number)
+  53          {
+  54   1              HC138_A = 0;
+C51 COMPILER V9.57.0.0   MAIN                                                              12/01/2019 16:30:44 PAGE 2   
+
+  55   1              HC138_B = 1;
+  56   1              HC138_C = 1;
+  57   1              WR = 0;
+  58   1              P0 = 0xFF;
+  59   1              HC138_A = 1;
+  60   1              HC138_B = 1;
+  61   1              HC138_C = 1;
+  62   1              WR = 0;
+  63   1              P0 = segment[number];
+  64   1      }
+  65          
+  66          void Matrix_Key()
+  67          {
+  68   1              // Row One
+  69   1              row_1 = 0;
+  70   1              row_2 = row_3 = row_4 = 1;
+  71   1              col_1 = col_2 = col_3 = col_4 = 1;
+  72   1              if(col_1 == 0)
+  73   1              {
+  74   2                      Key_Number = 0;
+  75   2              }
+  76   1              else if(col_2 == 0)
+  77   1              {
+  78   2                      Key_Number = 1;
+  79   2              }
+  80   1              else if(col_3 == 0)
+  81   1              {
+  82   2                      Key_Number = 2;
+  83   2              }
+  84   1              else if(col_4 == 0)
+  85   1              {
+  86   2                      Key_Number = 3;
+  87   2              }
+  88   1              
+  89   1              // Row two
+  90   1              row_2 = 0;
+  91   1              row_1 = row_3 = row_4 = 1;
+  92   1              col_1 = col_2 = col_3 = col_4 = 1;
+  93   1              if(col_1 == 0)
+  94   1              {
+  95   2                      Key_Number = 4;
+  96   2              }
+  97   1              else if(col_2 == 0)
+  98   1              {
+  99   2                      Key_Number = 5;
+ 100   2              }
+ 101   1              else if(col_3 == 0)
+ 102   1              {
+ 103   2                      Key_Number = 6;
+ 104   2              }
+ 105   1              else if(col_4 == 0)
+ 106   1              {
+ 107   2                      Key_Number = 7;
+ 108   2              }
+ 109   1              
+ 110   1              // Row three
+ 111   1              row_3 = 0;
+ 112   1              row_1 = row_2 = row_4 = 1;
+ 113   1              col_1 = col_2 = col_3 = col_4 = 1;
+ 114   1              if(col_1 == 0)
+ 115   1              {
+ 116   2                      Key_Number = 8;
+C51 COMPILER V9.57.0.0   MAIN                                                              12/01/2019 16:30:44 PAGE 3   
+
+ 117   2              }
+ 118   1              else if(col_2 == 0)
+ 119   1              {
+ 120   2                      Key_Number = 9;
+ 121   2              }
+ 122   1              else if(col_3 == 0)
+ 123   1              {
+ 124   2                      Key_Number = 10;
+ 125   2              }
+ 126   1              else if(col_4 == 0)
+ 127   1              {
+ 128   2                      Key_Number = 11;
+ 129   2              }
+ 130   1              
+ 131   1              // Row four
+ 132   1              row_4 = 0;
+ 133   1              row_1 = row_2 = row_3 = 1;
+ 134   1              col_1 = col_2 = col_3 = col_4 = 1;
+ 135   1              if(col_1 == 0)
+ 136   1              {
+ 137   2                      Key_Number = 12;
+ 138   2              }
+ 139   1              else if(col_2 == 0)
+ 140   1              {
+ 141   2                      Key_Number = 13;
+ 142   2              }
+ 143   1              else if(col_3 == 0)
+ 144   1              {
+ 145   2                      Key_Number = 14;
+ 146   2              }
+ 147   1              else if(col_4 == 0)
+ 148   1              {
+ 149   2                      Key_Number = 15;
+ 150   2              }
+ 151   1              
+ 152   1              DisplayNum(Key_Number);
+ 153   1      }
+ 154          
+ 155          
+ 156          void main()
+ 157          {
+ 158   1              System_Init();
+ 159   1              while(1)
+ 160   1              {
+ 161   2                      Matrix_Key();
+ 162   2                      Delay2ms();
+ 163   2              }
+ 164   1      }
+ 165          
+ 166          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    261    ----
+   CONSTANT SIZE    =     16    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      1    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
